@@ -5,14 +5,17 @@
   "author": "vviital <vviital@tut.by>",
   "license": "MIT",
   "scripts": {
-    "start": "",
+    "start": "babel-node index.js",
     "build": "babel src -d dist",
     "test": "jest test/* --coverage --runInBand --forceExit"
   },
   "dependencies": {
     "bluebird": "^3.5.1",
     "lodash": "^4.17.5",
-    "moment": "^2.20.1"
+    "moment": "^2.20.1",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.34.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
