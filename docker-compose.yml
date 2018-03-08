@@ -7,3 +7,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - '3000:3000'
+
+  auth:
+    build:
+      context: ./auth
+      dockerfile: Dockerfile
+    ports:
+      - '3001:3000'

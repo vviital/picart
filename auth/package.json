@@ -1,0 +1,43 @@
+{
+  "name": "auth",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js",
+    "build": "babel src -d dist",
+    "test": "jest test/* --coverage --runInBand --forceExit"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "koa": "^2.5.0",
+    "lodash": "^4.17.5",
+    "moment": "^2.20.1",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.34.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-transform-async-generator-functions": "^6.24.1",
+    "babel-preset-es2015-node": "^6.1.1",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "faker": "^4.1.0",
+    "jest": "^22.4.2",
+    "nodemon": "^1.17.1"
+  },
+  "jest": {
+    "setupFiles": [
+      "./test/env.js"
+    ],
+    "coverageDirectory": "./coverage",
+    "coverageReporters": [
+      "html"
+    ]
+  }
+}
