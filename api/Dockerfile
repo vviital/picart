@@ -8,10 +8,6 @@ RUN apt-get install npm --yes
 
 RUN npm install yarn -g -q
 
-COPY package.json yarn.lock ./
-
-RUN yarn
-
 COPY . .
 
-CMD ["yarn", "run", "start"]
+CMD ["sh", "entrypoint.sh"]

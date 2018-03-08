@@ -5,8 +5,10 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile
-    ports:
-      - '5000:3000'
+    volumes:
+      - ./api/:/home/app/
+      - node_modules_api:/home/app/node_modules
+      - yarn_cache_api:/usr/yarn-cache
     depends_on:
       - router
     restart: always  
@@ -15,8 +17,10 @@ services:
     build:
       context: ./auth
       dockerfile: Dockerfile
-    ports:
-      - '5001:3000'
+    volumes:
+      - ./auth/:/home/app/
+      - node_modules_auth:/home/app/node_modules
+      - yarn_cache_auth:/usr/yarn-cache
     depends_on:
       - router
     restart: always  
@@ -25,8 +29,10 @@ services:
     build:
       context: ./dashboard
       dockerfile: Dockerfile
-    ports:
-      - '5002:3000'
+    volumes:
+      - ./dashboard/:/home/app/
+      - node_modules_dashboard:/home/app/node_modules
+      - yarn_cache_dashboard:/usr/yarn-cache
     depends_on:
       - router
     restart: always  
@@ -35,8 +41,10 @@ services:
     build:
       context: ./forms
       dockerfile: Dockerfile
-    ports:
-      - '5003:3000'
+    volumes:
+      - ./forms/:/home/app/
+      - node_modules_forms:/home/app/node_modules
+      - yarn_cache_forms:/usr/yarn-cache
     depends_on:
       - router
     restart: always
@@ -48,3 +56,13 @@ services:
     ports:
       - '8080:8000'
     restart: always
+
+volumes:
+  yarn_cache_api:
+  yarn_cache_auth:
+  yarn_cache_forms:
+  yarn_cache_dashboard:
+  node_modules_api:
+  node_modules_auth:
+  node_modules_forms:
+  node_modules_dashboard:
