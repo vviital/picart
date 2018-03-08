@@ -7,6 +7,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - '5000:3000'
+    depends_on:
+      - router
+    restart: always  
 
   auth:
     build:
@@ -14,6 +17,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - '5001:3000'
+    depends_on:
+      - router
+    restart: always  
 
   dashboard:
     build:
@@ -21,6 +27,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - '5002:3000'
+    depends_on:
+      - router
+    restart: always  
   
   forms:
     build:
@@ -28,3 +37,14 @@ services:
       dockerfile: Dockerfile
     ports:
       - '5003:3000'
+    depends_on:
+      - router
+    restart: always
+
+  router:
+    build:
+      context: ./router
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8000'
+    restart: always
