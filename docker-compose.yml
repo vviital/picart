@@ -6,19 +6,25 @@ services:
       context: ./api
       dockerfile: Dockerfile
     ports:
-      - '3000:3000'
+      - '5000:3000'
 
   auth:
     build:
       context: ./auth
       dockerfile: Dockerfile
     ports:
-      - '3001:3000'
+      - '5001:3000'
 
   dashboard:
     build:
       context: ./dashboard
       dockerfile: Dockerfile
     ports:
-      - '3002:3000'
-      
+      - '5002:3000'
+  
+  forms:
+    build:
+      context: ./forms
+      dockerfile: Dockerfile
+    ports:
+      - '5003:3000'
