@@ -14,3 +14,11 @@ services:
       dockerfile: Dockerfile
     ports:
       - '3001:3000'
+
+  dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: Dockerfile
+    ports:
+      - '3002:3000'
+      
