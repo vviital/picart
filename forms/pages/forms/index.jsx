@@ -1,8 +1,8 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 
-const Index = props => {
-  console.log("props", props);
+const Index = (props) => {
+  console.log('props', props);
   return (
     <div>
       <Link href="/forms/about">
