@@ -11,43 +11,44 @@ services:
       - yarn_cache_api:/usr/yarn-cache
     depends_on:
       - router
+      - postgres
     restart: always  
 
-  auth:
-    build:
-      context: ./auth
-      dockerfile: Dockerfile
-    volumes:
-      - ./auth/:/home/app/
-      - node_modules_auth:/home/app/node_modules
-      - yarn_cache_auth:/usr/yarn-cache
-    depends_on:
-      - router
-    restart: always  
+  # auth:
+  #   build:
+  #     context: ./auth
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - ./auth/:/home/app/
+  #     - node_modules_auth:/home/app/node_modules
+  #     - yarn_cache_auth:/usr/yarn-cache
+  #   depends_on:
+  #     - router
+  #   restart: always  
 
-  dashboard:
-    build:
-      context: ./dashboard
-      dockerfile: Dockerfile
-    volumes:
-      - ./dashboard/:/home/app/
-      - node_modules_dashboard:/home/app/node_modules
-      - yarn_cache_dashboard:/usr/yarn-cache
-    depends_on:
-      - router
-    restart: always  
+  # dashboard:
+  #   build:
+  #     context: ./dashboard
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - ./dashboard/:/home/app/
+  #     - node_modules_dashboard:/home/app/node_modules
+  #     - yarn_cache_dashboard:/usr/yarn-cache
+  #   depends_on:
+  #     - router
+  #   restart: always  
   
-  forms:
-    build:
-      context: ./forms
-      dockerfile: Dockerfile
-    volumes:
-      - ./forms/:/home/app/
-      - node_modules_forms:/home/app/node_modules
-      - yarn_cache_forms:/usr/yarn-cache
-    depends_on:
-      - router
-    restart: always
+  # forms:
+  #   build:
+  #     context: ./forms
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - ./forms/:/home/app/
+  #     - node_modules_forms:/home/app/node_modules
+  #     - yarn_cache_forms:/usr/yarn-cache
+  #   depends_on:
+  #     - router
+  #   restart: always
 
   router:
     build:
@@ -57,6 +58,14 @@ services:
       - '8080:8000'
     restart: always
 
+  postgres:
+    container_name: 'postgres'
+    image: 'mdillon/postgis:10'
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - '6543:5432'
+ 
 volumes:
   yarn_cache_api:
   yarn_cache_auth:
@@ -66,3 +75,4 @@ volumes:
   node_modules_auth:
   node_modules_forms:
   node_modules_dashboard:
+  postgres:

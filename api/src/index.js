@@ -1,15 +1,17 @@
-// import { sequelize } from './src/database/index';
+import Koa from "koa";
+import { sequelize } from "./database/index";
+import { uploadDataSources } from "./services/adapters/index";
 
-// (async () => {
-//   await sequelize.authenticate();
-// })().then(console.log).catch(console.error);
+(async () => {
+  await sequelize.authenticate();
 
-import Koa from 'koa';
+  await uploadDataSources();
 
-const app = new Koa();
+  const app = new Koa();
 
-app.use(async (ctx) => {
-  ctx.body = 'Hello World, from api';
-});
+  app.use(async ctx => {
+    ctx.body = "Hello World, from api";
+  });
 
-app.listen(3000);
+  app.listen(3000);
+})().catch(console.error);

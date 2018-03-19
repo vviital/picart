@@ -1,25 +1,27 @@
-import Sequelize from 'sequelize';
+import Sequelize from "sequelize";
 
-import { sequelize } from '../index';
+import { sequelize } from "../index";
 
-const SpectrumLinesLibraries = sequelize.define('spectrum_lines_library', {
-  id: {
-    type: Sequelize.UUID,
-    primaryKey: true,
-    defaultValue: Sequelize.UUIDV4,
+const SpectrumLinesLibraries = sequelize.define(
+  "spectrum_lines_library",
+  {
+    id: {
+      type: Sequelize.UUID,
+      primaryKey: true,
+      defaultValue: Sequelize.UUIDV4
+    },
+    name_library: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    library_description: {
+      type: Sequelize.STRING
+    },
+    comments_library: {
+      type: Sequelize.STRING
+    }
   },
-  name_library: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  library_description: {
-    type: Sequelize.STRING,
-  },
-  comments_library: {
-    type: Sequelize.STRING,
-  },
-});
+  { underscored: true }
+);
 
-export {
-  SpectrumLinesLibraries,
-};
+export { SpectrumLinesLibraries };
