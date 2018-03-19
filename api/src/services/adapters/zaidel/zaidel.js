@@ -48,7 +48,7 @@ export default () => {
       where: { name_library: "zaidel" }
     });
 
-    if (library) return;
+    if (library) return resolve();
 
     library = await SpectrumLinesLibraries.create({
       name_library: "zaidel",
